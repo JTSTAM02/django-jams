@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Artist, Album, Genre, Song, Song_Genre, Artists_Songs, Artists_Album, Album_Song, Song_Artist, Play, User_Playlist, User_Playlist_Song
-from .serializers import ArtistSerializer, AlbumSerializer, GenreSerializer, SongSerializer, Song_GenreSerializer, Artists_SongSerializer, Artists_AlbumSerializer, Song_ArtistSerializer, Album_SongSerializer, PlaySerializer, User_Playlist_SongSerializer, User_PlaylistSerializer
+from .serializers import ArtistSerializer, AlbumSerializer, GenreSerializer, SongSerializer, Song_GenreSerializer, Artists_SongSerializer, Artists_AlbumSerializer, Song_ArtistSerializer, Album_SongSerializer, PlaySerializer, User_Playlist_SongSerializer, User_PlaylistSerializer, UsersSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -109,7 +109,7 @@ class PlayRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PlaySerializer
 
 class AllData(APIView):
-    def get(self):
+    def get(self, request):
         artists = Artist.objects.all()
         albums = Album.objects.all()
         genres = Genre.objects.all()

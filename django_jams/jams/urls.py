@@ -37,6 +37,6 @@ urlpatterns = [
     path('plays/<int:pk>/', views.PlayRetrieveUpdateDeleteView.as_view(), name='play-retrieve-update-delete'),
 
 
-    path('api/', views.AllData.as_view(), name='alldata')
+    path('all/', views.AllData.as_view(), name='all')
 ]
 
