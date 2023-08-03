@@ -101,13 +101,13 @@
         queryset = Author.objects.all()
         serializer_class = AuthorSerializer
 
-    - class BookListCreateView(generics.ListCreateAPIView):
-        queryset = Book.objects.all()
-        serializer_class = BookSerializer
+    - class UserListCreateView(generics.ListCreateAPIView):
+        queryset = User.objects.all()
+        serializer_class = UserSerializer
 
-    - class BookRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
-        queryset = Book.objects.all()
-        serializer_class = BookSerializer
+    - class UserRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+        queryset = User.objects.all()
+        serializer_class = UserSerializer
 
     - class GenreListCreateView(generics.ListCreateAPIView):
         queryset = Genre.objects.all()
@@ -186,10 +186,8 @@
 
 ## EndPoints (URL's and Routes)
    ### GET:
-    -api/authors/
-    -/api/authors/<author_id>/
-    -api/books
-    -/api/books/<book_id>/
+    -api/artist/
+    -/api/artist/<artist_id>/
     -api/genres
     -api/genres/<genre_id>/
 
