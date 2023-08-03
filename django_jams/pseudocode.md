@@ -21,26 +21,23 @@
 
 
 
-## Questions
-    -
+## AGILE STORIES
+  -As an user I want to be able to see my songs, so that I can click on songs to listen to
+  -As an user I want to be able to add new songs, so that I can hear new music
+  -As an user I want to be able to see how many times a song has been played, so that I know how often I listen to a song
+  -As an user I want to be able to delete songs, so that my library does not become too full
 
-## Solutions
+## CRUD
+    - Create: 
+        * POST- enter new information
 
+    - Read: 
+        * GET- display information within given table
 
-## CRUD Functionality (Routes and API)
-    - Create:
-        * 
-
-    - Read
-        * 
-
-    - Update
-        * 
-
-    -Delete
-        * 
-
-
+    - Update: 
+        * PUT- add data to existing tables
+    - Delete: 
+        * DELETE- remove tables/information
 ## Models
     - class Artist(models.Model):
         name = models.CharField(max_length=100)
@@ -96,6 +93,29 @@
 
 ## Views
 
+    -class AuthorListCreateView(generics.ListCreateAPIView):
+        queryset = Author.objects.all()
+        serializer_class = AuthorSerializer
+
+    - class AuthorRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+        queryset = Author.objects.all()
+        serializer_class = AuthorSerializer
+
+    - class BookListCreateView(generics.ListCreateAPIView):
+        queryset = Book.objects.all()
+        serializer_class = BookSerializer
+
+    - class BookRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+        queryset = Book.objects.all()
+        serializer_class = BookSerializer
+
+    - class GenreListCreateView(generics.ListCreateAPIView):
+        queryset = Genre.objects.all()
+        serializer_class = GenreSerializer
+
+    -class GenreRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+        queryset = Genre.objects.all()
+        serializer_class = GenreSerializer
 
 ## Serializers
     - class ArtistSerializer(serializers.ModelSerializer):
@@ -135,27 +155,45 @@
 
     - class Artists_AlbumSerializer(serializers.ModelSerializer):
         class Meta:
-            model =
-            fields = 
+            model = Artists_Album
+            fields = '__all_'
 
-    - class Artists_SongSerializer(serializers.ModelSerializer):
+    - class Song_ArtistSerializer(serializers.ModelSerializer):
         class Meta:
-            model =
-            fields = 
+            model = Song_Artist
+            fields = '__all__'
 
-    - class Artists_SongSerializer(serializers.ModelSerializer):
+    - class Album_SongSerializer(serializers.ModelSerializer):
         class Meta:
-            model =
-            fields = 
+            model = Album_Song
+            fields = '__all__'
 
-    - class Artists_SongSerializer(serializers.ModelSerializer):
+    - class User_PlaylistSerializer(serializers.ModelSerializer):
         class Meta:
-            model =
-            fields = 
+            model = User_Playlist
+            fields = '__all__'
+
+    - class User_Playlist_SongSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User_Playlist_Song
+            fields = '__all__'
+
+    -class PlaySerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Play
+            fields = '__all__'
 
 
 ## EndPoints (URL's and Routes)
-
+   ### GET:
+    -api/authors/
+    -/api/authors/<author_id>/
+    -api/books
+    -/api/books/<book_id>/
+    -api/genres
+    -api/genres/<genre_id>/
 
 
 ## Database Schema/Table Relationships
+
+see https://dbdiagram.io/d/64c15c9802bd1c4a5ebffe5e 
