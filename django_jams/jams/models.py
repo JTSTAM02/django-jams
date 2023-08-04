@@ -1,6 +1,6 @@
 from django.db import models
 
-class Artist(models.Model): # many to many 
+class Artist(models.Model):
         name = models.CharField(max_length=100)
 
 class Users(models.Model):
@@ -8,7 +8,7 @@ class Users(models.Model):
     username = models.CharField(max_length=100)
 
 class Genre(models.Model):
-    name = models.CharField(max_length=50) # many to many
+    name = models.CharField(max_length=50)
 
 class Song(models.Model):
     name = models.CharField(max_length=200)
@@ -24,7 +24,7 @@ class Artists_Songs(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 
 class Album(models.Model):
-    name = models.CharField(max_length=200) # many to many 
+    name = models.CharField(max_length=200)
 
 class Artists_Album(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)

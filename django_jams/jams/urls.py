@@ -15,11 +15,11 @@ urlpatterns = [
     path('albums/', views.AlbumListCreateView.as_view(), name='album-list-create'),
     path('albums/<int:pk>/', views.AlbumRetrieveUpdateDeleteView.as_view(), name='album-retrieve-update-delete'),
 
-    path('artists-songs/', views.Artists_SongsListCreateView.as_view(), name='artist-songs-list-create'),
-    path('artists-songs/<int:pk>/', views.Artists_SongsListCreateView.as_view(), name='artist-songs-retrieve-update-delete'),
+    path('artists-songs/', views.Artists_SongsListCreateView.as_view(), name='artists-songs-list-create'),
+    path('artists-songs/<int:pk>/', views.Artists_SongsRetrieveUpdateDeleteView.as_view(), name='artists-songs-retrieve-update-delete'),
 
-    path('artists-albums/', views.Artists_AlbumListCreateView.as_view(), name='artists-albums-list-create'),
-    path('artists-albums/<int:pk>/', views.Artists_AlbumRetrieveUpdateDeleteView.as_view(), name='artists-albums-retrieve-update-delete'),
+    path('artists-album/', views.Artists_AlbumListCreateView.as_view(), name='artists-album-list-create'),
+    path('artists-album/<int:pk>/', views.Artists_AlbumRetrieveUpdateDeleteView.as_view(), name='artists-album-retrieve-update-delete'),
 
     path('song-artists/', views.Song_ArtistListCreateView.as_view(), name='song-artists-list-create'),
     path('song-artists/<int:pk>/', views.Song_ArtistRetrieveUpdateDeleteView.as_view(), name='song-artists-retrieve-update-delete'),
@@ -35,6 +35,9 @@ urlpatterns = [
     
     path('plays/', views.PlayListCreateView.as_view(), name='play-list-create'),
     path('plays/<int:pk>/', views.PlayRetrieveUpdateDeleteView.as_view(), name='play-retrieve-update-delete'),
+
+    path('users/', views.UsersListCreateView.as_view(), name='users-list-create'),
+    path('users/<int:pk>/', views.UsersRetrieveUpdateDeleteView.as_view(), name="users-retrieve-update-delete"),
 
 
     path('all/', views.AllData.as_view(), name='all')

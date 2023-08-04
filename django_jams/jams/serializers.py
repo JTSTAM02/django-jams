@@ -29,9 +29,9 @@ class AlbumSerializer(serializers.ModelSerializer):
 class Song_GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song_Genre
-        fields = '__all_'
+        fields = '__all__'
 
-class Artists_SongSerializer(serializers.ModelSerializer):
+class Artists_SongsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artists_Songs
         fields = '__all__'
@@ -39,7 +39,7 @@ class Artists_SongSerializer(serializers.ModelSerializer):
 class Artists_AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artists_Album
-        fields = '__all_'
+        fields = '__all__'
 
 class Song_ArtistSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,8 +1,16 @@
-from rest_framework import generics
-from .models import Artist, Album, Genre, Song, Song_Genre, Artists_Songs, Artists_Album, Album_Song, Song_Artist, Play, User_Playlist, User_Playlist_Song
-from .serializers import ArtistSerializer, AlbumSerializer, GenreSerializer, SongSerializer, Song_GenreSerializer, Artists_SongSerializer, Artists_AlbumSerializer, Song_ArtistSerializer, Album_SongSerializer, PlaySerializer, User_Playlist_SongSerializer, User_PlaylistSerializer, UsersSerializer
+from rest_framework import generics # imports necessary functions
+from .models import Users, Artist, Album, Genre, Song, Song_Genre, Artists_Songs, Artists_Album, Album_Song, Song_Artist, Play, User_Playlist, User_Playlist_Song
+from .serializers import ArtistSerializer, UsersSerializer, AlbumSerializer, GenreSerializer, SongSerializer, Song_GenreSerializer, Artists_SongsSerializer, Artists_AlbumSerializer, Song_ArtistSerializer, Album_SongSerializer, PlaySerializer, User_Playlist_SongSerializer, User_PlaylistSerializer, UsersSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+class UsersListCreateView(generics.ListCreateAPIView):
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
+
+class UsersRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Users.objects.all()
+    serializer_class = UsersSerializer
 
 class ArtistListCreateView(generics.ListCreateAPIView):
     queryset = Artist.objects.all()
@@ -46,11 +54,11 @@ class Song_GenreRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 class Artists_SongsListCreateView(generics.ListCreateAPIView):
     queryset = Artists_Songs.objects.all()
-    serializer_class = Artists_SongSerializer
+    serializer_class = Artists_SongsSerializer
 
 class Artists_SongsRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Artists_Songs.objects.all()
-    serializer_class = Artists_SongSerializer
+    serializer_class = Artists_SongsSerializer
 
 class AlbumListCreateView(generics.ListCreateAPIView):
     queryset = Album.objects.all()
@@ -114,17 +122,44 @@ class AllData(APIView):
         albums = Album.objects.all()
         genres = Genre.objects.all()
         songs = Song.objects.all()
+        song_genres = Song_Genre.objects.all()
+        artists_songs = Artists_Songs.objects.all()
+        artists_albums = Artists_Album.objects.all()
+        album_songs = Album_Song.objects.all()
+        song_artists = Song_Artist.objects.all()
+        plays = Play.objects.all()
+        user_playlists = User_Playlist.objects.all()
+        user_playlist_songs = User_Playlist_Song.objects.all()
+        users = Users.objects.all()
 
         artist_serializer = ArtistSerializer(artists, many=True)
         album_serializer = AlbumSerializer(albums, many=True)
         genre_serializer = GenreSerializer(genres, many=True)
         song_serializer = SongSerializer(songs, many=True)
+        song_genre_serializer = Song_GenreSerializer(song_genres, many=True)
+        artists_songs_serializer = Artists_SongsSerializer(artists_songs, many=True)
+        artists_albums_serializer = Artists_AlbumSerializer(artists_albums, many=True)
+        album_songs_serializer = Album_SongSerializer(album_songs, many=True)
+        song_artists_serializer = Song_ArtistSerializer(song_artists, many=True)
+        play_serializer = PlaySerializer(plays, many=True)
+        user_playlists_serializer = User_PlaylistSerializer(user_playlists, many=True)
+        user_playlist_songs_serializer = User_Playlist_SongSerializer(user_playlist_songs, many=True)
+        users_serializer = UsersSerializer(users, many=True)
 
         data = {
             'artists': artist_serializer.data,
             'albums': album_serializer.data,
             'genres': genre_serializer.data,
             'songs': song_serializer.data,
+            'song_genres': song_genre_serializer.data,
+            'artists_songs': artists_songs_serializer.data,
+            'artists_albums': artists_albums_serializer.data,
+            'album_songs': album_songs_serializer.data,
+            'song_artists': song_artists_serializer.data,
+            'plays': play_serializer.data,
+            'user_playlists': user_playlists_serializer.data,
+            'user_playlist_songs': user_playlist_songs_serializer.data,
+            'users': users_serializer.data,
         }
 
         return Response(data)
